@@ -143,40 +143,8 @@ Arbre234 RechercherCle (Arbre234 a, int cle)
   }
 }
 
-
-/*void Init_somme_cle(Arbre234 a){
-  if(a==NULL)
-    return;
-  
-  if(a->t==0){
-    return;
-  }
-  else if(a->t==2){
-    a->somme=a->cles[1];
-    Init_somme_cle(a->fils[1]);
-    Init_somme_cle(a->fils[2]);   
-  }
-  else if(a->t==3){
-    a->somme=a->cles[0]+ a->cles[1];
-    Init_somme_cle(a->fils[0]);
-    Init_somme_cle(a->fils[1]);
-    Init_somme_cle(a->fils[2]);  
-  }
-  else{
-    a->somme=a->cles[0]+ a->cles[1]+ a->cles[2];
-    Init_somme_cle(a->fils[0]);
-    Init_somme_cle(a->fils[1]);
-    Init_somme_cle(a->fils[2]);  
-    Init_somme_cle(a->fils[3]); 
-  }
-}*/
-
-//incomplet
 Arbre234 noeud_max (Arbre234 a)
 {
-  /*
-    Retourne le noeud avec la somme maximale des cles internes
-  */
   unsigned int etage = 0;
   unsigned int taillePile;
   pnoeud234 tmp;
@@ -270,10 +238,6 @@ Arbre234 noeud_max (Arbre234 a)
 
 void Afficher_Cles_Largeur (Arbre234 a) //on utilise une pile
 {
-  /*
-    Afficher le cles de l'arbre a avec
-    un parcours en largeur
-  */
   unsigned int etage = 0;
   unsigned int taillePile;
   pnoeud234 tmp;
@@ -355,11 +319,6 @@ void Affichage_Cles_Triees_Recursive (Arbre234 a)
 
 void Affichage_Cles_Triees_NonRecursive (Arbre234 a)
 {
-    /* 
-     Afficher les cles en ordre croissant
-     Cette fonction ne sera pas recursive
-     Utiliser une pile
-  */
   unsigned int etage = 0;
   unsigned int taillePile;
   pnoeud234 tmp;
@@ -432,19 +391,95 @@ void Affichage_Cles_Triees_NonRecursive (Arbre234 a)
   for(int j=0;j<cpt;j++){
     printf("%d ",cle[j]);
   }
-
 }
 
 
+Arbre234 ajouter_noeud(Arbre234 *a, Arbre234 b){
+
+  if(b==NULL)
+    return *a;
+  else{
+    if(b->t==0){
+      return *a;
+    }
+    else if(b->t==2){
+      ajouter_cle(a,b->cles[1],0,NULL);
+      ajouter_noeud(a,b->fils[1]);
+      ajouter_noeud(a,b->fils[2]);
+      return *a;
+    }
+    else if(b->t==3){
+      ajouter_cle(a,b->cles[0],0,NULL);
+      ajouter_cle(a,b->cles[1],0,NULL);
+      ajouter_noeud(a,b->fils[0]);
+      ajouter_noeud(a,b->fils[1]);
+      ajouter_noeud(a,b->fils[2]);
+      return *a;
+    }
+    else{
+      ajouter_cle(a,b->cles[0],0,NULL);
+      ajouter_cle(a,b->cles[1],0,NULL);
+      ajouter_cle(a,b->cles[2],0,NULL);
+      ajouter_noeud(a,b->fils[0]);
+      ajouter_noeud(a,b->fils[1]);
+      ajouter_noeud(a,b->fils[2]);
+      ajouter_noeud(a,b->fils[3]);
+      return *a;
+    }
+  }
+}
 
 
-//incomplet
 void Detruire_Cle (Arbre234 *a, int cle)
 {
-  /*
-    retirer la cle de l'arbre a
-  */
   Arbre234 b=RechercherCle(*a,cle);
+  if(b==NULL){
+    return;
+  }
+  else{
+    Arbre234 c=NULL;
+    if(b->t==0){
+      return;
+    }
+    else if(b->t==2){
+      Arbre234 tmp1=b->fils[1];
+      Arbre234 tmp2=b->fils[2];
+      c=ajouter_noeud(&c,tmp1);
+      c=ajouter_noeud(&c,tmp2);
+    }
+    else if(b->t==3){
+      for(int i=0;i<2;i++){
+        if(b->cles[i]!=cle)
+        ajouter_cle(&c,b->cles[i],0,NULL);
+      }
+      Arbre234 tmp0=b->fils[0];
+      Arbre234 tmp1=b->fils[1];
+      Arbre234 tmp2=b->fils[2];
+      c=ajouter_noeud(&c,tmp0);
+      c=ajouter_noeud(&c,tmp1);
+      c=ajouter_noeud(&c,tmp2);
+    }
+    else{
+      for(int i=0;i<3;i++){
+        if(b->cles[i]!=cle)
+        ajouter_cle(&c,b->cles[i],0,NULL);
+      }
+      Arbre234 tmp0=b->fils[0];
+      Arbre234 tmp1=b->fils[1];
+      Arbre234 tmp2=b->fils[2];
+      Arbre234 tmp3=b->fils[3];
+      c=ajouter_noeud(&c,tmp0);
+      c=ajouter_noeud(&c,tmp1);
+      c=ajouter_noeud(&c,tmp2);
+      c=ajouter_noeud(&c,tmp3);
+    }
+    if(b==*a)
+      *a=NULL;
+    else
+      free(b);
+    *a=ajouter_noeud(a,c);
+  }
+  
   
 }
 
@@ -464,12 +499,12 @@ int main (int argc, char **argv)
   
   afficher_arbre (a, 0) ;
 
-  printf ("Nombre niveaux: %d\n", hauteur (a)) ;
+  //printf ("Nombre niveaux: %d\n", hauteur (a)) ;
   
-  printf("Nombre cle : %d\n", NombreCles(a));
+  //printf("Nombre cle : %d\n", NombreCles(a));
 
-  printf("CleMax: %d\n",CleMax(a));
-  printf("CleMin: %d\n",CleMin(a));
+  //printf("CleMax: %d\n",CleMax(a));
+  //printf("CleMin: %d\n",CleMin(a));
   printf("\nParcours largeur:\n");
   Afficher_Cles_Largeur(a);
   printf("\n");
@@ -477,12 +512,9 @@ int main (int argc, char **argv)
   //printf("cle trié r: ");Affichage_Cles_Triees_Recursive(a);printf("\n");
   //printf("cle trié nr: ");Affichage_Cles_Triees_NonRecursive(a);printf("\n");
 
-  //a=RechercherCle(a,80);
-  //Detruire_Cle(&a,50);
-  //ajouter_cle(&a,79,0,a);
-
+  //a=RechercherCle(a,50);
+  //Detruire_Cle(&a,10);
+  //a=noeud_max(a);
   //afficher_arbre(a,0);
-  a=noeud_max(a);
-  afficher_arbre(a,0);
   return 0;
 }
