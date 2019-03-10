@@ -164,7 +164,7 @@ Arbre234 noeud_max (Arbre234 a)
     while(taillePile > 0){
       tmp=depiler(noeudCourant);
       if(tmp->t==0){        
-      }
+      } 
       else if(tmp->t==2){
         if(tmp->fils[1]->t!=0){
         i=empiler(noeudCourant,tmp->fils[1]);if(i!=1)return NULL;
