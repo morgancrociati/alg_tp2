@@ -164,7 +164,7 @@ Arbre234 noeud_max (Arbre234 a)
     while(taillePile > 0){
       tmp=depiler(noeudCourant);
       if(tmp->t==0){        
-      } 
+      }
       else if(tmp->t==2){
         if(tmp->fils[1]->t!=0){
         i=empiler(noeudCourant,tmp->fils[1]);if(i!=1)return NULL;
@@ -513,8 +513,8 @@ int main (int argc, char **argv)
   //printf("cle trié nr: ");Affichage_Cles_Triees_NonRecursive(a);printf("\n");
 
   //a=RechercherCle(a,50);
-  //Detruire_Cle(&a,10);
+  Detruire_Cle(&a,50);
   //a=noeud_max(a);
-  //afficher_arbre(a,0);
+  afficher_arbre(a,0);
   return 0;
 }
