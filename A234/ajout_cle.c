@@ -233,34 +233,41 @@ void ajouter_cle(Arbre234 *a, int cle, int niveau, Arbre234 pere)
 	pnoeud234 p;
 	pnoeud234 c = *a;
 
+	//L'arbre n'existe pas
 	if (c == NULL)
 	{
-		p = allouer_noeud();
-		p->t = 2;
+		/*
+		*a = allouer_noeud();
+		(*a)->t = 0;
+		//L'arbre existe maintenant mais il est vide
+		*/
+
+		p =  = allouer_noeud();
+
+		p->t = 0;
 		p->cles[1] = cle;
 
 		p->fils[0] = allouer_noeud();
-		p->fils[3] = allouer_noeud();
-
 		p->fils[1] = allouer_noeud();
 		p->fils[2] = allouer_noeud();
+		p->fils[3] = allouer_noeud();
 
 		*a = p;
 		return;
 	}
 
+	//L'arbre est vide
 	if (c->t == 0)
 	{
 		// Le noeud c est vide
 		// creation d'un 2-noeud
-
 		c->cles[1] = cle;
 		c->t = 2;
 
 		c->fils[0] = allouer_noeud();
-		c->fils[3] = allouer_noeud();
 		c->fils[1] = allouer_noeud();
 		c->fils[2] = allouer_noeud();
+		c->fils[3] = allouer_noeud();
 
 		return;
 	} // c->t == 0
