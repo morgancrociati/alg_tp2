@@ -364,7 +364,7 @@ void Afficher_Cles_Largeur(Arbre234 a)
                 if (tmp->fils[3]->t != 0 && empiler(noeudSuivant, tmp->fils[3]) != 1)
                     return;
             }
-            taillePile--;
+
         }
         tmpP = noeudCourant;
         noeudCourant = noeudSuivant;
@@ -574,13 +574,12 @@ void Detruire_Cle(Arbre234 *a, int cle)
             *a = NULL;
         else
             free(b);
-        *a = ajouter_noeud(a, c);
-    }
-      free(b);
+ 
     *a=ajouter_noeud(a,c);
     Arbre234 f=NULL;
     f=ajouter_noeud(&f,*a);
     *a=f;
+    }
   }
 
 
@@ -610,15 +609,14 @@ int main(int argc, char **argv)
     printf("\n");
 
     //printf("cle trié r: ");Affichage_Cles_Triees_Recursive(a);printf("\n");
-    //printf("cle trié nr: ");Affichage_Cles_Triees_NonRecursive(a);printf("\n");
+    printf("cle trié nr: ");Affichage_Cles_Triees_NonRecursive(a);printf("\n");
 
     //a=RechercherCle(a,50);
-    Detruire_Cle(&a, 50);
+    //Detruire_Cle(&a, 50);
     //a=noeud_max(a);
-    afficher_arbre(a, 0);
-    return 0;
+    //afficher_arbre(a, 0);
   //a=RechercherCle(a,200);
   //a=noeud_max(a);
-  afficher_arbre(a,0);
+  //afficher_arbre(a,0);
   return 0;
 }
