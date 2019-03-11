@@ -46,7 +46,7 @@ else
 int CleMin (Arbre234 a)
 ```
 
-La fonction `CleMin` est relativement similaire à la fonction `CleMax` dans son fonctionnement sauf que la clef minimal se trouve le plus à gauche. On doit aussi séparer le type 2, des types 3 et 4 dans la fonction. Car l'élément le plus à gauche se trouve soit en position 1 (pour le type 2) ou en position 0 (pour les types 3 et 4).  
+La fonction `CleMin` est relativement similaire à la fonction `CleMax` dans son fonctionnement sauf que la clef minimale se trouve le plus à gauche. On doit aussi séparer le type 2, des types 3 et 4 dans la fonction. Car l'élément le plus à gauche se trouve soit en position 1 (pour le type 2) ou en position 0 (pour les types 3 et 4).  
 
 ```C
 //Conditions utilisé pour les types 3 et 4
@@ -64,7 +64,7 @@ else
 Arbre234 RechercherCle (Arbre234 a, int cle)
 ```
 
-Dans `RechercherCle` on regarde tout d'abord si la clef recherché ne se trouve pas dans les clefs de notre noeud courant. Si elle ne si trouve pas, alors on recherche dans le fils pouvant contenir cette clef. 
+Dans `RechercherCle` on regarde tout d'abord si la clef recherchée ne se trouve pas dans les clefs de notre noeud courant. Si elle ne s'y trouve pas, alors on recherche dans le fils pouvant contenir cette clef. 
 
 ---
 
@@ -75,18 +75,18 @@ Arbre234 noeud_max (Arbre234 a)
 Arbre234 noeud_max_nr (Arbre234 a)
 ```
 
-Nous avons décidé de réaliser cette fonction en récursif et en non-récursif pour voir les différences en termes de compléxité. Pour réaliser ses 2 fonctions, nous avons eu recours à une fonction externe calculant la somme des clefs d'un noeud appelé `somme_noeud`.
+Nous avons décidé de réaliser cette fonction en récursif et en non-récursif pour voir les différences en termes de compléxité. Pour réaliser ces 2 fonctions, nous avons eu recours à une fonction externe calculant la somme des clefs d'un noeud appelée `somme_noeud`.
 
 ```C
 //Fonction renvoyant la somme des clefs du noeud envoyé
 int somme_noeud(Arbre234 a)
 ```
 
-Pour `noeud_max_nr` nous utilisons deux pile pour stocker nos noeuds. Une pile nous permet de parcourir tout notre arbre et une autre pile nous permet de stocker tous les noeuds de l'arbre. On parcours donc tout l'arbre en stockant les noeuds. Puis on compare chacune des sommes des clefs de nos noeuds pour trouver le maximum.
+Pour `noeud_max_nr` nous utilisons deux piles pour stocker nos noeuds. Une pile nous permet de parcourir tout notre arbre et une autre pile nous permet de stocker tous les noeuds de l'arbre. On parcours donc tout l'arbre en stockant les noeuds. Puis on compare chacune des sommes des clefs de nos noeuds pour trouver le maximum.
 
-Pour la version récursive, `noeud_max`, on calcul la somme des clefs de notre cellule courante. Et on la compare avec le résultat de `noeud_max` des fils de notre noeuds (si ils sont non vide) . On renvoit la valeur maximal entre ces valeurs.
+Pour la version récursive, `noeud_max`, on calcule la somme des clefs de notre cellule courante, et on la compare avec le résultat de `noeud_max` des fils de notre noeuds (si ils sont non vide) . On renvoit la valeur maximale entre ces valeurs.
 
-Les deux fonctions ne sont pas similaire dans leur implémentation mais donne le même résultat. La version récursive est plus courte et plus efficace que la version non-récursive. Car la version récursive compare et parcours en même temps tandis que la version non-récursive parcours puis compare.
+Les deux fonctions ne sont pas similaire dans leurs implémentations mais donnent le même résultat. La version récursive est plus courte et plus efficace que la version non-récursive, car la version récursive compare et parcours en même temps tandis que la version non-récursive parcours puis compare.
 
 ---
 
@@ -107,11 +107,11 @@ void Affichage_Cles_Triees_Recursive (Arbre234 a)
 void Affichage_Cles_Triees_NonRecursive (Arbre234 a)
 ```
 
-Ces deux fonctions permettent d'afficher toutes les clefs d'un arbre 2-3-4 par ordre croissant. Pour faire cela il faut se rappeler le fonctionnement des arbres 2-3-4 car ils sont déjà trié (de part leur structure).
+Ces deux fonctions permettent d'afficher toutes les clefs d'un arbre 2-3-4 par ordre croissant. Pour faire cela il faut se rappeler le fonctionnement des arbres 2-3-4 car ils sont déjà triés (de part leur structure).
 
 `Affichage_Cles_Triees_Recursive` affiche de manière logique toutes les clefs par ordre croissant. On lit toutes les clefs de gauche à droite.
 
-`Affichage_Cles_Triees_NonRecursive` lit toutes les clefs de notre arbre en les stockant. Puis trie toutes les clefs avant de les affichers.
+`Affichage_Cles_Triees_NonRecursive` lit toutes les clefs de notre arbre en les stockant. Puis trie toutes les clefs avant de les afficher.
 
 ---
 
