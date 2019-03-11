@@ -428,9 +428,9 @@ void Affichage_Cles_Triees_NonRecursive(Arbre234 a)
             {
                 cle[cpt] = tmp->cles[1];
                 cpt++;
-                if (tmp->fils[1]->t != 0 && empiler(noeudSuivant, tmp->fils[1]) != 1)
+                if (tmp->fils[1]->t != 0 && empiler(noeudCourant, tmp->fils[1]) != 1)
                     return;
-                if (tmp->fils[2]->t != 0 && empiler(noeudSuivant, tmp->fils[2]) != 1)
+                if (tmp->fils[2]->t != 0 && empiler(noeudCourant, tmp->fils[2]) != 1)
                     return;
             }
             else if (tmp->t == 3)
@@ -439,11 +439,11 @@ void Affichage_Cles_Triees_NonRecursive(Arbre234 a)
                 cpt++;
                 cle[cpt] = tmp->cles[1];
                 cpt++;
-                if (tmp->fils[0]->t != 0 && empiler(noeudSuivant, tmp->fils[0]))
+                if (tmp->fils[0]->t != 0 && empiler(noeudCourant, tmp->fils[0]))
                     return;
-                if (tmp->fils[1]->t != 0 && empiler(noeudSuivant, tmp->fils[1]))
+                if (tmp->fils[1]->t != 0 && empiler(noeudCourant, tmp->fils[1]))
                     return;
-                if (tmp->fils[2]->t != 0 && empiler(noeudSuivant, tmp->fils[2]))
+                if (tmp->fils[2]->t != 0 && empiler(noeudCourant, tmp->fils[2]))
                     return;
             }
             else if (tmp->t == 4)
@@ -454,13 +454,13 @@ void Affichage_Cles_Triees_NonRecursive(Arbre234 a)
                 cpt++;
                 cle[cpt] = tmp->cles[2];
                 cpt++;
-                if (tmp->fils[0]->t != 0 && empiler(noeudSuivant, tmp->fils[0]))
+                if (tmp->fils[0]->t != 0 && empiler(noeudCourant, tmp->fils[0]))
                     return;
-                if (tmp->fils[1]->t != 0 && empiler(noeudSuivant, tmp->fils[1]))
+                if (tmp->fils[1]->t != 0 && empiler(noeudCourant, tmp->fils[1]))
                     return;
-                if (tmp->fils[2]->t != 0 && empiler(noeudSuivant, tmp->fils[2]))
+                if (tmp->fils[2]->t != 0 && empiler(noeudCourant, tmp->fils[2]))
                     return;
-                if (tmp->fils[3]->t != 0 && empiler(noeudSuivant, tmp->fils[3]))
+                if (tmp->fils[3]->t != 0 && empiler(noeudCourant, tmp->fils[3]))
                     return;
             }
             taillePile--;
