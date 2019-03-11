@@ -115,7 +115,7 @@ Arbre234 RechercherCle (Arbre234 a, int cle)
       return RechercherCle(a->fils[2],cle);
   }
   else if(a->t==3){
-    if(cle==a->cles[0] || cle==a->cles[1] || cle==a->cles[2])
+    if(cle==a->cles[0] || cle==a->cles[1])
       return a;
     else if(cle<a->cles[0])
       return RechercherCle(a->fils[0],cle);
@@ -127,7 +127,7 @@ Arbre234 RechercherCle (Arbre234 a, int cle)
     }
   }
   else{
-    if(cle==a->cles[0] || cle==a->cles[1] || cle==a->cles[2] || cle==a->cles[3])
+    if(cle==a->cles[0] || cle==a->cles[1] || cle==a->cles[2])
       return a;
     else if(cle<a->cles[0])
       return RechercherCle(a->fils[0],cle);
@@ -478,6 +478,9 @@ void Detruire_Cle (Arbre234 *a, int cle)
     else
       free(b);
     *a=ajouter_noeud(a,c);
+    Arbre234 f=NULL;
+    f=ajouter_noeud(&f,*a);
+    *a=f;
   }
   
   
@@ -512,8 +515,8 @@ int main (int argc, char **argv)
   //printf("cle trié r: ");Affichage_Cles_Triees_Recursive(a);printf("\n");
   //printf("cle trié nr: ");Affichage_Cles_Triees_NonRecursive(a);printf("\n");
 
-  //a=RechercherCle(a,50);
-  Detruire_Cle(&a,50);
+  //a=RechercherCle(a,200);
+  Detruire_Cle(&a,200);
   //a=noeud_max(a);
   afficher_arbre(a,0);
   return 0;
