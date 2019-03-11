@@ -461,7 +461,7 @@ void Affichage_Cles_Triees_NonRecursive(Arbre234 a)
 	{
 		etage++;
 		taillePile = noeudCourant->sommet;
-
+ 
 		while (taillePile > 0)
 		{
 			tmp = depiler(noeudCourant);
