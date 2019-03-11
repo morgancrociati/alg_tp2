@@ -2,8 +2,6 @@
 
 # **TP 2** - [Arbre 2-3-4](https://fr.wikipedia.org/wiki/Arbre_2-3-4 "Page Wikipedia")
 
-## Rappel Arbre 2-3-4:
-
 ## Analyse des fonctions:
 
 ---
@@ -117,7 +115,27 @@ Ces deux fonctions permettent d'afficher toutes les clefs d'un arbre 2-3-4 par o
 
 
 ```C
+//Fonction supprimant une clef d'un arbre 2-3-4 tout en gardant leur logique
 void Detruire_Cle (Arbre234 *a, int cle)
 ```
+
+Pour réaliser la fonction `Detruire_Cle`, nous avons créé une fonction permettant d'ajouter un noeud à un arbre.
+
+```C
+//Fonction récursive ajoutant un noeud à un arbre 2-3-4
+Arbre234 ajouter_noeud(Arbre234 *a, Arbre234 b)
+```
+
+Dans la fonction `ajouter_noeud`, on ajoute à l'arbre donné la clef du noeud donné. Puis on appelle la fonction `ajouter_noeud` sur les fils du noeud donné.
+
+La fonction `Detruire_Cle` est séparé en plusieurs étape:
+1. Trouver le noeud ayant la clef passé en argument dans l'arbre.
+    * Si il ne fut pas trouvé on renvoit alors le même arbre 2-3-4 sans modification.
+2. On garde en mémoire les fils que le noeud avait.
+3. On ajoute à un arbre temporaire ses fils (ainsi que les autres clefs du noeud si il en avait d'autre).
+4. On ajoute à l'arbre donné en argument, l'arbre temporaire précédent (on rappel qu'un arbre est aussi un noeud)
+5. L'étape finale est de retrier l'arbre avant de le renvoyer
+    * On réalise cette étape car il se peut que l'arbre obtenue ne respecte pas la norme d'un arbre 2-3-4
+
 
 ---

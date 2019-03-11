@@ -345,7 +345,7 @@ void Afficher_Cles_Largeur(Arbre234 a)
             else if (tmp->t == 3)
             {
                 printf("%d %d ", tmp->cles[0], tmp->cles[1]);
-                if (tmp->fils[0]->t != 0 && empiler(noeudSuivant, tmp->fils[0])  != 1)
+                if (tmp->fils[0]->t != 0 && empiler(noeudSuivant, tmp->fils[0]) != 1)
                     return;
                 if (tmp->fils[1]->t != 0 && empiler(noeudSuivant, tmp->fils[1]) != 1)
                     return;
@@ -364,7 +364,6 @@ void Afficher_Cles_Largeur(Arbre234 a)
                 if (tmp->fils[3]->t != 0 && empiler(noeudSuivant, tmp->fils[3]) != 1)
                     return;
             }
-
         }
         tmpP = noeudCourant;
         noeudCourant = noeudSuivant;
@@ -523,16 +522,12 @@ void Detruire_Cle(Arbre234 *a, int cle)
 {
     Arbre234 b = RechercherCle(*a, cle);
     if (b == NULL)
-    {
         return;
-    }
     else
     {
         Arbre234 c = NULL;
         if (b->t == 0)
-        {
             return;
-        }
         else if (b->t == 2)
         {
             Arbre234 tmp1 = b->fils[1];
@@ -574,14 +569,13 @@ void Detruire_Cle(Arbre234 *a, int cle)
             *a = NULL;
         else
             free(b);
- 
-    *a=ajouter_noeud(a,c);
-    Arbre234 f=NULL;
-    f=ajouter_noeud(&f,*a);
-    *a=f;
-    }
-  }
 
+        *a = ajouter_noeud(a, c);
+        Arbre234 f = NULL;
+        f = ajouter_noeud(&f, *a);
+        *a = f;
+    }
+}
 
 int main(int argc, char **argv)
 {
@@ -609,14 +603,16 @@ int main(int argc, char **argv)
     printf("\n");
 
     //printf("cle trié r: ");Affichage_Cles_Triees_Recursive(a);printf("\n");
-    printf("cle trié nr: ");Affichage_Cles_Triees_NonRecursive(a);printf("\n");
+    printf("cle trié nr: ");
+    Affichage_Cles_Triees_NonRecursive(a);
+    printf("\n");
 
     //a=RechercherCle(a,50);
     //Detruire_Cle(&a, 50);
     //a=noeud_max(a);
     //afficher_arbre(a, 0);
-  //a=RechercherCle(a,200);
-  //a=noeud_max(a);
-  //afficher_arbre(a,0);
-  return 0;
+    //a=RechercherCle(a,200);
+    //a=noeud_max(a);
+    //afficher_arbre(a,0);
+    return 0;
 }
