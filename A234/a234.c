@@ -82,9 +82,7 @@ int CleMin(Arbre234 a)
 Arbre234 RechercherCle(Arbre234 a, int cle)
 {
     if (a == NULL || a->t == 0)
-    {
         return NULL;
-    }
     else if (a->t == 2)
     {
         if (cle == a->cles[1])
@@ -578,7 +576,13 @@ void Detruire_Cle(Arbre234 *a, int cle)
             free(b);
         *a = ajouter_noeud(a, c);
     }
-}
+      free(b);
+    *a=ajouter_noeud(a,c);
+    Arbre234 f=NULL;
+    f=ajouter_noeud(&f,*a);
+    *a=f;
+  }
+
 
 int main(int argc, char **argv)
 {
@@ -601,7 +605,6 @@ int main(int argc, char **argv)
     //printf("Nombre cle : %d\n", NombreCles(a));
 
     //printf("CleMax: %d\n",CleMax(a));
-    //printf("CleMin: %d\n",CleMin(a));
     printf("\nParcours largeur:\n");
     Afficher_Cles_Largeur(a);
     printf("\n");
@@ -614,4 +617,8 @@ int main(int argc, char **argv)
     //a=noeud_max(a);
     afficher_arbre(a, 0);
     return 0;
+  //a=RechercherCle(a,200);
+  //a=noeud_max(a);
+  afficher_arbre(a,0);
+  return 0;
 }
