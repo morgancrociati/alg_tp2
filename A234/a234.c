@@ -321,7 +321,7 @@ void Afficher_Cles_Largeur(Arbre234 a)
 
     ppile_t noeudCourant = creer_pile();
     ppile_t noeudSuivant = creer_pile();
-    ppile_t tmp;
+    ppile_t tmpP;
     if (empiler(noeudCourant, a) != 1)
         return;
 
@@ -366,9 +366,9 @@ void Afficher_Cles_Largeur(Arbre234 a)
             }
             taillePile--;
         }
-        tmp = noeudCourant;
+        tmpP = noeudCourant;
         noeudCourant = noeudSuivant;
-        noeudSuivant = tmp;
+        noeudSuivant = tmpP;
         printf("\n");
     }
 }
