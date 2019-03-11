@@ -1,7 +1,7 @@
 #ifndef _PILE_H_
 #define _PILE_H_
 
-#define MAX_PILE_SIZE 50
+#define MAX_PILE_SIZE 1024
 
 typedef struct pile
 {

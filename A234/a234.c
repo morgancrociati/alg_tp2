@@ -412,7 +412,7 @@ void Affichage_Cles_Triees_NonRecursive(Arbre234 a)
 
     ppile_t noeudCourant = creer_pile();
 
-    int cle[256];
+    int cle[MAX_PILE_SIZE];
 
     if (empiler(noeudCourant, a) != 1)
         return;
