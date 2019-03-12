@@ -79,12 +79,12 @@ Arbre234 lire_arbre (char *nom_fichier)
   FILE *f ;
   int cle;
   Arbre234 a = NULL;
-  
+
   f = fopen (nom_fichier, "r") ;
   
   if (f == NULL)
     {
-      fprintf (stderr, "le fichier %s n existe pas\n", nom_fichier) ;
+      fprintf (stderr, "le fichier %s n'existe pas\n", nom_fichier) ;
       exit (0) ;
     }
   
@@ -92,7 +92,7 @@ Arbre234 lire_arbre (char *nom_fichier)
     {
       ajouter_cle (&a, cle, 0, NULL) ;
       
-      printf ("================== affiichage arbre avec la cle %d ==================\n", cle) ;
+      printf ("================== affichage arbre avec la cle %d ==================\n", cle) ;
       afficher_arbre (a, 0) ;
       
     }

@@ -1,21 +1,25 @@
-all: a234
+CC = gcc
+CO = -Wall -Werror -g
 
-OPTIONS_COMPIL=-Wall -g -c
+all: test_a234
 
-a234: a234.o lire_affichage.o ajout_cle.o pile.o
-	gcc -o a234 a234.o lire_affichage.o ajout_cle.o pile.o
+test_a234: test_a234.o a234.o lire_affichage.o ajout_cle.o pile.o
+	$(CC) $(CO) -o $@ $^
+
+test_a234.o: test_a234.c a234.h
+	$(CC) $(CO) -c $<
 
 a234.o: a234.c a234.h
-	gcc $(OPTIONS_COMPIL) -std=gnu99 a234.c
+	$(CC) $(CO) -c $<
 
 lire_affichage.o: lire_affichage.c a234.h
-	gcc $(OPTIONS_COMPIL) lire_affichage.c
+	$(CC) $(CO) -c $<
 
 ajout_cle.o : ajout_cle.c a234.h
-	gcc $(OPTIONS_COMPIL) ajout_cle.c
+	$(CC) $(CO) -c $<
 
 pile.o: pile.c pile.h
-	gcc $(OPTIONS_COMPIL) pile.c
+	$(CC) $(CO) -c $<
 
 clean:
-	rm -rf a234 *.o *~
+	rm test_a234 *.o

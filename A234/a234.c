@@ -577,6 +577,7 @@ void Detruire_Cle(Arbre234 *a, int cle)
     }
 }
 
+/*
 int main(int argc, char **argv)
 {
     Arbre234 a;
@@ -616,3 +617,4 @@ int main(int argc, char **argv)
     //afficher_arbre(a,0);
     return 0;
 }
+*/
